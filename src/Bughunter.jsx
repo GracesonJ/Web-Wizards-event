@@ -2,27 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const SNIPPETS = [
-  {
-    title: 'Centering a div',
-    lang: 'CSS',
-    code: `.box {
-  display: flex;
-  align-item: center;
-  justify-content: center;
-}`,
-    buggyLines: [3],
-    explanation: "Typo: it's align-items (plural), not align-item. The browser silently ignores unknown properties, so vertical centering never applies.",
-  },
-  {
-    title: 'Bootstrap button + onclick',
-    lang: 'HTML',
-    code: `<button class="btn btn-primary"
-  onclick="handleClick()">
-  Submit
-</button>`,
-    buggyLines: [2],
-    explanation: 'Nothing technically wrong with vanilla HTML, but in JSX this needs onClick (camelCase) — onclick is silently ignored by React.',
-  },
+
+  
   {
     title: 'While loop counter',
     lang: 'JavaScript',
@@ -42,16 +23,6 @@ while (i < 5) {
 }`,
     buggyLines: [2],
     explanation: 'Missing semicolon after flex — this breaks parsing of the next line in some minifiers/older browsers and is easy to miss.',
-  },
-  {
-    title: 'Bootstrap grid columns',
-    lang: 'HTML',
-    code: `<div class="row">
-  <div class="col-md-6">Left</div>
-  <div class="col-md-7">Right</div>
-</div>`,
-    buggyLines: [2, 3],
-    explanation: 'col-md-6 + col-md-7 = 13 columns, exceeding the 12-column grid. The "Right" column will wrap onto a new row unexpectedly.',
   },
   {
     title: 'String comparison',
@@ -76,37 +47,6 @@ for (let i = 0; i < items.length; i++) {
     explanation: "Variable name typo: the array is items but the loop logs item[i] (no 's'), which throws a ReferenceError.",
   },
   {
-    title: 'Bootstrap navbar toggler',
-    lang: 'HTML',
-    code: `<button class="navbar-toggler" type="button"
-  data-bs-toggle="collapse"
-  data-bs-traget="#navbarNav">
-</button>`,
-    buggyLines: [3],
-    explanation: 'Typo: data-bs-traget should be data-bs-target. The navbar toggle button will render but silently fail to open the menu.',
-  },
-  {
-    title: 'CSS box sizing',
-    lang: 'CSS',
-    code: `.card {
-  width: 300px;
-  padding: 20px;
-  border: 2px solid #333;
-}`,
-    buggyLines: [2, 3, 4],
-    explanation: 'Without box-sizing: border-box, padding and border add to the 300px width, making the actual rendered box 344px wide instead of 300px.',
-  },
-  {
-    title: 'Function default parameter',
-    lang: 'JavaScript',
-    code: `function greet(name = 'Guest') {
-  console.log('Hello, ' + name);
-}
-greet(null);`,
-    buggyLines: [4],
-    explanation: 'Default parameters only kick in for undefined, not null. Calling greet(null) logs "Hello, null" instead of using the default.',
-  },
-  {
     title: 'Nested loop sum',
     lang: 'JavaScript',
     code: `let sum = 0;
@@ -118,40 +58,7 @@ for (let i = 0; i < 3; i++) {
 console.log(sum)`,
     buggyLines: [7],
     explanation: 'Missing semicolon at the end of the console.log statement. Harmless here due to ASI, but inconsistent style can cause real bugs in minified or chained code.',
-  },
-
-  {
-    title: 'CSS z-index not working',
-    lang: 'CSS',
-    code: `.tooltip {
-  z-index: 999;
-  color: white;
-}`,
-    buggyLines: [2],
-    explanation: 'z-index has no effect without a positioning context. The element needs position: relative, absolute, fixed, or sticky for z-index to apply.',
-  },
-  {
-    title: 'Bootstrap modal trigger',
-    lang: 'HTML',
-    code: `<button type="button"
-  data-bs-toggle="modal"
-  data-bs-target="myModal">
-  Open
-</button>`,
-    buggyLines: [3],
-    explanation: 'data-bs-target needs a CSS selector with a # prefix: data-bs-target="#myModal". Without #, Bootstrap cannot find the modal element.',
-  },
-  {
-    title: 'Input placeholder styling',
-    lang: 'CSS',
-    code: `input::placeholder {
-  color: #999;
-  font-size: 14px;
-  font-weight: bold;
-}`,
-    buggyLines: [4],
-    explanation: 'font-weight is not inherited by ::placeholder in all browsers and may be silently ignored. Use opacity or color tweaks instead; bold placeholder text is also a UX anti-pattern.',
-  },
+  }
 
 ]
 
