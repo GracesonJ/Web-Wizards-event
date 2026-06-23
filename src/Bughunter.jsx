@@ -14,16 +14,6 @@ const SNIPPETS = [
     explanation: "Typo: it's align-items (plural), not align-item. The browser silently ignores unknown properties, so vertical centering never applies.",
   },
   {
-    title: 'Looping through an array',
-    lang: 'JavaScript',
-    code: `let total = 0;
-for (let i = 0; i <= arr.length; i++) {
-  total += arr[i];
-}`,
-    buggyLines: [2],
-    explanation: 'Off-by-one error: i <= arr.length runs one extra iteration, reading arr[arr.length] which is undefined, turning total into NaN.',
-  },
-  {
     title: 'Bootstrap button + onclick',
     lang: 'HTML',
     code: `<button class="btn btn-primary"
@@ -129,15 +119,7 @@ console.log(sum)`,
     buggyLines: [7],
     explanation: 'Missing semicolon at the end of the console.log statement. Harmless here due to ASI, but inconsistent style can cause real bugs in minified or chained code.',
   },
-  {
-    title: 'React useEffect dependency',
-    lang: 'JavaScript',
-    code: `useEffect(() => {
-  fetchData(userId);
-}, []);`,
-    buggyLines: [3],
-    explanation: 'Empty dependency array means this only runs once on mount. If userId changes, fetchData is never re-called. userId should be in the deps array: [userId].',
-  },
+
   {
     title: 'CSS z-index not working',
     lang: 'CSS',
@@ -160,42 +142,6 @@ console.log(sum)`,
     explanation: 'data-bs-target needs a CSS selector with a # prefix: data-bs-target="#myModal". Without #, Bootstrap cannot find the modal element.',
   },
   {
-    title: 'Array destructuring',
-    lang: 'JavaScript',
-    code: `const [name, age] = { name: 'Ali', age: 25 };
-console.log(name);`,
-    buggyLines: [1],
-    explanation: 'Array destructuring cannot be used on a plain object. Objects must use curly braces: const { name, age } = { name: "Ali", age: 25 }.',
-  },
-  {
-    title: 'CSS specificity override',
-    lang: 'CSS',
-    code: `p {
-  color: blue;
-}
-.intro p {
-  color: red;
-}
-p {
-  color: green;
-}`,
-    buggyLines: [7, 8, 9],
-    explanation: '.intro p has higher specificity than a bare p selector, so the last p { color: green } block will NOT override .intro p { color: red } inside .intro.',
-  },
-  {
-    title: 'Promise then chaining',
-    lang: 'JavaScript',
-    code: `fetch('/api/data')
-  .then(res => res.json())
-  .then(data => {
-    return data;
-  })
-  .catch(err => console.log(err));
-  .finally(() => setLoading(false));`,
-    buggyLines: [7],
-    explanation: 'There is a stray semicolon after the .catch() line, which terminates the expression early. The .finally() call is then a syntax error — remove the semicolon on line 6.',
-  },
-  {
     title: 'Input placeholder styling',
     lang: 'CSS',
     code: `input::placeholder {
@@ -206,18 +152,7 @@ p {
     buggyLines: [4],
     explanation: 'font-weight is not inherited by ::placeholder in all browsers and may be silently ignored. Use opacity or color tweaks instead; bold placeholder text is also a UX anti-pattern.',
   },
-  {
-    title: 'React state update',
-    lang: 'JavaScript',
-    code: `const [count, setCount] = useState(0);
 
-function increment() {
-  setCount(count + 1);
-  setCount(count + 1);
-}`,
-    buggyLines: [4, 5],
-    explanation: 'Both setCount calls read the same stale count value, so the counter only increments by 1 instead of 2. Use the functional form: setCount(prev => prev + 1) to always build on the latest state.',
-  },
 ]
 
 const RULES = [
@@ -232,7 +167,7 @@ function shuffleArray(array) {
   const arr = [...array]
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+      ;[arr[i], arr[j]] = [arr[j], arr[i]]
   }
   return arr
 }
@@ -440,9 +375,8 @@ function Bughunter() {
               {/* Code block */}
               <div className="relative w-full mb-6">
                 <div
-                  className={`rounded-xl border border-neutral-800 bg-[#0b0b0f] overflow-hidden transition-all duration-500 ${
-                    isBlurred ? 'blur-md scale-[0.99] opacity-50' : 'blur-0 scale-100 opacity-100'
-                  }`}
+                  className={`rounded-xl border border-neutral-800 bg-[#0b0b0f] overflow-hidden transition-all duration-500 ${isBlurred ? 'blur-md scale-[0.99] opacity-50' : 'blur-0 scale-100 opacity-100'
+                    }`}
                 >
                   {/* Fake terminal dots */}
                   <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-neutral-800 bg-neutral-900/60">
@@ -514,10 +448,9 @@ function Bughunter() {
                     onClick={handleNext}
                     disabled={!isBlurred}
                     className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center gap-1
-                      ${
-                        isBlurred
-                          ? 'bg-rose-600 hover:bg-rose-500 text-white'
-                          : 'bg-neutral-800 text-neutral-500 cursor-not-allowed border border-neutral-700'
+                      ${isBlurred
+                        ? 'bg-rose-600 hover:bg-rose-500 text-white'
+                        : 'bg-neutral-800 text-neutral-500 cursor-not-allowed border border-neutral-700'
                       }`}
                   >
                     Next
@@ -534,9 +467,8 @@ function Bughunter() {
               {shuffled.map((_, i) => (
                 <span
                   key={i}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    i < currentIndex ? 'bg-rose-500' : i === currentIndex ? 'bg-rose-400 scale-125' : 'bg-neutral-700'
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-colors ${i < currentIndex ? 'bg-rose-500' : i === currentIndex ? 'bg-rose-400 scale-125' : 'bg-neutral-700'
+                    }`}
                 />
               ))}
             </div>
@@ -589,9 +521,8 @@ function Bughunter() {
                         className={`flex ${isBuggy ? 'bg-rose-500/15 -mx-5 px-5' : ''}`}
                       >
                         <span
-                          className={`select-none w-6 flex-shrink-0 text-right mr-4 ${
-                            isBuggy ? 'text-rose-400 font-bold' : 'text-neutral-600'
-                          }`}
+                          className={`select-none w-6 flex-shrink-0 text-right mr-4 ${isBuggy ? 'text-rose-400 font-bold' : 'text-neutral-600'
+                            }`}
                         >
                           {lineNum}
                         </span>
