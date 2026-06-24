@@ -122,36 +122,36 @@ function analyzeGrid(cells) {
 
 function buildQuestions(stats) {
   return [
-    {
-      id: 'mostRepeated',
-      prompt: 'Which icon appeared the most times in the grid?',
-      answer:
-        stats.maxCount === 0
-          ? 'No icon repeated — the grid had no duplicates.'
-          : stats.mostRepeated.length > 1
-          ? `It was a tie: ${stats.mostRepeated.map(([n]) => n).join(', ')} — each appeared ${stats.maxCount} times.`
-          : `${stats.mostRepeated[0][0]} — it appeared ${stats.maxCount} times.`,
-    },
-    {
-      id: 'blankColumn',
-      prompt: 'Which column was completely blank (no icons at all)?',
-      answer:
-        stats.blankColumns.length === 0
-          ? 'No column was fully blank — every column had at least one icon.'
-          : stats.blankColumns.length === 1
-          ? `Column ${stats.blankColumns[0]} was completely blank.`
-          : `Columns ${stats.blankColumns.join(', ')} were completely blank.`,
-    },
-    {
-      id: 'totalBlank',
-      prompt: 'How many empty cells were there in total?',
-      answer: `There were ${stats.totalBlankCells} empty cell${stats.totalBlankCells === 1 ? '' : 's'} in the grid.`,
-    },
-    {
-      id: 'noRepeat',
-      prompt: 'How many icons appeared exactly once (no repeats)?',
-      answer: `${stats.iconsWithoutRepetition} icon${stats.iconsWithoutRepetition === 1 ? '' : 's'} appeared exactly once.`,
-    },
+    // {
+    //   id: 'mostRepeated',
+    //   prompt: 'Which icon appeared the most times in the grid?',
+    //   answer:
+    //     stats.maxCount === 0
+    //       ? 'No icon repeated — the grid had no duplicates.'
+    //       : stats.mostRepeated.length > 1
+    //       ? `It was a tie: ${stats.mostRepeated.map(([n]) => n).join(', ')} — each appeared ${stats.maxCount} times.`
+    //       : `${stats.mostRepeated[0][0]} — it appeared ${stats.maxCount} times.`,
+    // },
+    // {
+    //   id: 'blankColumn',
+    //   prompt: 'Which column was completely blank (no icons at all)?',
+    //   answer:
+    //     stats.blankColumns.length === 0
+    //       ? 'No column was fully blank — every column had at least one icon.'
+    //       : stats.blankColumns.length === 1
+    //       ? `Column ${stats.blankColumns[0]} was completely blank.`
+    //       : `Columns ${stats.blankColumns.join(', ')} were completely blank.`,
+    // },
+    // {
+    //   id: 'totalBlank',
+    //   prompt: 'How many empty cells were there in total?',
+    //   answer: `There were ${stats.totalBlankCells} empty cell${stats.totalBlankCells === 1 ? '' : 's'} in the grid.`,
+    // },
+    // {
+    //   id: 'noRepeat',
+    //   prompt: 'How many icons appeared exactly once (no repeats)?',
+    //   answer: `${stats.iconsWithoutRepetition} icon${stats.iconsWithoutRepetition === 1 ? '' : 's'} appeared exactly once.`,
+    // },
     {
       id: 'reactCount',
       prompt: 'How many times did the React icon appear?',

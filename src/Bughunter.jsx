@@ -4,16 +4,16 @@ import { useNavigate } from 'react-router-dom'
 const SNIPPETS = [
 
   
-  {
-    title: 'While loop counter',
-    lang: 'JavaScript',
-    code: `let i = 0;
-while (i < 5) {
-  console.log(i);
-}`,
-    buggyLines: [3],
-    explanation: 'i is never incremented inside the loop, causing an infinite loop. Missing i++; before the closing brace.',
-  },
+//   {
+//     title: 'While loop counter',
+//     lang: 'JavaScript',
+//     code: `let i = 0;
+// while (i < 5) {
+//   console.log(i);
+// }`,
+//     buggyLines: [3],
+//     explanation: 'i is never incremented inside the loop, causing an infinite loop. Missing i++; before the closing brace.',
+//   },
   {
     title: 'Flex container gap',
     lang: 'CSS',
@@ -24,41 +24,41 @@ while (i < 5) {
     buggyLines: [2],
     explanation: 'Missing semicolon after flex — this breaks parsing of the next line in some minifiers/older browsers and is easy to miss.',
   },
-  {
-    title: 'String comparison',
-    lang: 'JavaScript',
-    code: `function isAdult(age) {
-  if (age = 18) {
-    return true;
-  }
-  return false;
-}`,
-    buggyLines: [2],
-    explanation: 'Single = is assignment, not comparison. This sets age to 18 (always truthy) instead of checking if (age === 18).',
-  },
-  {
-    title: 'For loop with array length',
-    lang: 'JavaScript',
-    code: `const items = ['a', 'b', 'c'];
-for (let i = 0; i < items.length; i++) {
-  console.log(item[i]);
-}`,
-    buggyLines: [3],
-    explanation: "Variable name typo: the array is items but the loop logs item[i] (no 's'), which throws a ReferenceError.",
-  },
-  {
-    title: 'Nested loop sum',
-    lang: 'JavaScript',
-    code: `let sum = 0;
-for (let i = 0; i < 3; i++) {
-  for (let j = 0; j < 3; j++) {
-    sum += i * j;
-  }
-}
-console.log(sum)`,
-    buggyLines: [7],
-    explanation: 'Missing semicolon at the end of the console.log statement. Harmless here due to ASI, but inconsistent style can cause real bugs in minified or chained code.',
-  }
+//   {
+//     title: 'String comparison',
+//     lang: 'JavaScript',
+//     code: `function isAdult(age) {
+//   if (age = 18) {
+//     return true;
+//   }
+//   return false;
+// }`,
+//     buggyLines: [2],
+//     explanation: 'Single = is assignment, not comparison. This sets age to 18 (always truthy) instead of checking if (age === 18).',
+//   },
+//   {
+//     title: 'For loop with array length',
+//     lang: 'JavaScript',
+//     code: `const items = ['a', 'b', 'c'];
+// for (let i = 0; i < items.length; i++) {
+//   console.log(item[i]);
+// }`,
+//     buggyLines: [3],
+//     explanation: "Variable name typo: the array is items but the loop logs item[i] (no 's'), which throws a ReferenceError.",
+//   },
+//   {
+//     title: 'Nested loop sum',
+//     lang: 'JavaScript',
+//     code: `let sum = 0;
+// for (let i = 0; i < 3; i++) {
+//   for (let j = 0; j < 3; j++) {
+//     sum += i * j;
+//   }
+// }
+// console.log(sum)`,
+//     buggyLines: [7],
+//     explanation: 'Missing semicolon at the end of the console.log statement. Harmless here due to ASI, but inconsistent style can cause real bugs in minified or chained code.',
+//   }
 
 ]
 

@@ -6,35 +6,35 @@ import { useNavigate } from 'react-router-dom'
 // with a short note on why that's the conventional sequence.
 // Convention used: Positioning -> Display/Box model -> Sizing -> Spacing -> Border/Background -> Typography -> Visual effects (shadow/transform/transition)
 const CHALLENGES = [
-  {
-    title: 'Card layout',
-    selector: '.card',
-    lines: [
-      'position: relative;',
-      'display: flex;',
-      'width: 280px;',
-      'padding: 20px;',
-      'background: #1e1b4b;',
-      'border-radius: 16px;',
-      'color: #fff;',
-      'box-shadow: 0 10px 30px rgba(0,0,0,0.4);',
-    ],
-    note: 'Positioning comes first (it affects layout context), then display and sizing, then spacing, then visual styling like background and borders, then typography, and finally effects like shadows.',
-  },
-  {
-    title: 'Navigation bar',
-    selector: '.navbar',
-    lines: [
-      'position: fixed;',
-      'display: flex;',
-      'width: 100%;',
-      'padding: 12px 24px;',
-      'background: #18181b;',
-      'border-bottom: 1px solid #27272a;',
-      'font-size: 16px;',
-    ],
-    note: 'Fixed positioning is set first since it determines how the element behaves in the document, followed by display/layout, sizing, spacing, then background and border, then typography last.',
-  },
+  // {
+  //   title: 'Card layout',
+  //   selector: '.card',
+  //   lines: [
+  //     'position: relative;',
+  //     'display: flex;',
+  //     'width: 280px;',
+  //     'padding: 20px;',
+  //     'background: #1e1b4b;',
+  //     'border-radius: 16px;',
+  //     'color: #fff;',
+  //     'box-shadow: 0 10px 30px rgba(0,0,0,0.4);',
+  //   ],
+  //   note: 'Positioning comes first (it affects layout context), then display and sizing, then spacing, then visual styling like background and borders, then typography, and finally effects like shadows.',
+  // },
+  // {
+  //   title: 'Navigation bar',
+  //   selector: '.navbar',
+  //   lines: [
+  //     'position: fixed;',
+  //     'display: flex;',
+  //     'width: 100%;',
+  //     'padding: 12px 24px;',
+  //     'background: #18181b;',
+  //     'border-bottom: 1px solid #27272a;',
+  //     'font-size: 16px;',
+  //   ],
+  //   note: 'Fixed positioning is set first since it determines how the element behaves in the document, followed by display/layout, sizing, spacing, then background and border, then typography last.',
+  // },
   {
     title: 'Primary button',
     selector: '.btn-primary',
@@ -49,34 +49,34 @@ const CHALLENGES = [
     ],
     note: 'Display and spacing come first to establish the box shape, then background and border styling, then text styling, with transition (a visual effect) placed last.',
   },
-  {
-    title: 'Modal overlay',
-    selector: '.modal-overlay',
-    lines: [
-      'position: fixed;',
-      'top: 0;',
-      'width: 100vw;',
-      'height: 100vh;',
-      'background: rgba(0,0,0,0.7);',
-      'display: flex;',
-      'align-items: center;',
-    ],
-    note: 'Positioning and offsets (top) come first since they place the element on the page, then sizing (width/height), then background, then flex alignment which controls its children.',
-  },
-  {
-    title: 'Input field',
-    selector: '.input-field',
-    lines: [
-      'display: block;',
-      'width: 100%;',
-      'padding: 10px 14px;',
-      'margin-bottom: 12px;',
-      'border: 1px solid #3f3f46;',
-      'border-radius: 6px;',
-      'font-size: 14px;',
-    ],
-    note: 'Display and width set the box first, then internal spacing (padding) before external spacing (margin), then border styling, then typography last.',
-  },
+  // {
+  //   title: 'Modal overlay',
+  //   selector: '.modal-overlay',
+  //   lines: [
+  //     'position: fixed;',
+  //     'top: 0;',
+  //     'width: 100vw;',
+  //     'height: 100vh;',
+  //     'background: rgba(0,0,0,0.7);',
+  //     'display: flex;',
+  //     'align-items: center;',
+  //   ],
+  //   note: 'Positioning and offsets (top) come first since they place the element on the page, then sizing (width/height), then background, then flex alignment which controls its children.',
+  // },
+  // {
+  //   title: 'Input field',
+  //   selector: '.input-field',
+  //   lines: [
+  //     'display: block;',
+  //     'width: 100%;',
+  //     'padding: 10px 14px;',
+  //     'margin-bottom: 12px;',
+  //     'border: 1px solid #3f3f46;',
+  //     'border-radius: 6px;',
+  //     'font-size: 14px;',
+  //   ],
+  //   note: 'Display and width set the box first, then internal spacing (padding) before external spacing (margin), then border styling, then typography last.',
+  // },
 ]
 
 const RULES = [
